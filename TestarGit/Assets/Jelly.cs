@@ -186,6 +186,13 @@ public class Jelly : MonoBehaviour {
         mesh.triangles = triangles;     // Assign meshes triangles
     }
 
+    void touchFloor(int fall_length)
+    {
+        for (int i = 0; i < size * size * size; i++)
+        {
+
+        }
+    }
 
     public Vector3 spring_damper(float distance, Vector3 pos_from, Vector3 pos_to, Vector3 v_from, Vector3 v_to)
     {
