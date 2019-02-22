@@ -59,7 +59,6 @@ public class Jelly : MonoBehaviour {
 		points.vel = new Vector3[size * size * size];
 		points.acc = new Vector3[size * size * size];
 
-		int row = 0;
 		//Loopar igenom alla vecticies och ger dem dess värden.
 		for (int y = 0; y < size; y++) {
 			
@@ -67,17 +66,14 @@ public class Jelly : MonoBehaviour {
 				
 				for (int x = 0; x < size; x++) {
 					
-					vert [x + row * size] = new Vector3 (x, y, z);
-					vel [x + row * size] = new Vector3 (0, 0, 0);
-					acc [x + row * size] = new Vector3 (0, 0, 0);
-
-					//Debug.Log("pos: " + x + ", " + y);
+					pos [x + y * size * size + z * size] = new Vector3 (x, y, z);
+					vel [x + y * size * size + z * size] = new Vector3 (0, 0, 0);
+					acc [x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 				}
-				row++;
 			}
 		}
 
-		mesh.vertices = vert;
+		mesh.vertices = pos;
 
     }
   
