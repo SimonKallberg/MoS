@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 struct Point
 {
     public Vector3[] pos;
     public Vector3[] vel;
     public Vector3[] acc;
 }
-
 
 public class Jelly : MonoBehaviour {
 
@@ -27,8 +25,8 @@ public class Jelly : MonoBehaviour {
 
     Mesh mesh;          //The mesh.
 
-    MeshFilter mf;      
-    MeshRenderer mr;    
+    MeshFilter mf;
+    MeshRenderer mr;
     public Material mat;
 
     // Use this for initialization
@@ -45,7 +43,7 @@ public class Jelly : MonoBehaviour {
         //Fixar trianglarna.
         calcTriangles();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 		//Ändrar på points värden enligt vårt sysstem.
@@ -61,9 +59,9 @@ public class Jelly : MonoBehaviour {
 
 		//Loopar igenom alla vecticies och ger dem dess värden.
 		for (int y = 0; y < size; y++) {
-			
+
 			for (int z = 0; z < size; z++) {
-				
+
 				for (int x = 0; x < size; x++) {
 					
 					points.pos[x + y * size * size + z * size] = new Vector3 (x, y, z);
@@ -76,7 +74,7 @@ public class Jelly : MonoBehaviour {
 		mesh.vertices = points.pos;
 
     }
-  
+
 
     void calcTriangles()
     {
