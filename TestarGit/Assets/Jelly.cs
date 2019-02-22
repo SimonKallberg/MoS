@@ -41,10 +41,9 @@ public class Jelly : MonoBehaviour {
         mf.mesh = mesh;
         mr.material = mat;
         //Plaserar pos på rätt ställe så det blir en kub.
-
+        placePos();
         //Fixar trianglarna.
-
-
+        calcTriangles();
     }
 	
 	// Update is called once per frame
@@ -52,7 +51,29 @@ public class Jelly : MonoBehaviour {
 		//Ändrar på points värden enligt vårt sysstem.
 	}
 
-    
+    void placePos()
+    {
+
+
+
+
+
+
+    }
+  
+
+    void calcTriangles()
+    {
+
+
+
+
+
+
+
+
+    }
+
     public Vector3 spring_damper(float distance, Vector3 pos_from, Vector3 pos_to, Vector3 v_from, Vector3 v_to)
     {
 
