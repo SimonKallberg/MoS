@@ -23,7 +23,7 @@ public class Jelly : MonoBehaviour {
 
     Point points;
 
-    int[] triangles;    //triangles for the mesh
+
 
     Mesh mesh;          //The mesh.
 
@@ -80,14 +80,26 @@ public class Jelly : MonoBehaviour {
 
     void calcTriangles()
     {
+        int noTriang = (size - 1) * (size - 1) * 2 * 6;
 
+        int[] triangles = new int[noTriang*3];    //triangles for the mesh
 
-
-
-
-
-
-
+        int triCounter = 0;
+        for(int z = 0; z<size; z++)
+        {
+            for (int x = 0; x < size; x++)
+            {
+                currentPoint = size * z + x; // Lower left corner
+                triangles[triCounter + 0] = currentPoint;
+                triangles[triCounter + 1] = currentPoint + size + 1;
+                triangles[triCounter + 2] = currentPoint + size;
+                
+                triangles[triCounter + 3] = currentPoint;
+                triangles[triCounter + 3] = currentPoint + 1;
+                triangles[triCounter + 3] = currentPoint + size + 1;
+                triCounter += 6;
+            }
+        }
     }
 
     public Vector3 spring_damper(float distance, Vector3 pos_from, Vector3 pos_to, Vector3 v_from, Vector3 v_to)
