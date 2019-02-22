@@ -43,7 +43,7 @@ public class Jelly : MonoBehaviour {
         //Plaserar pos på rätt ställe så det blir en kub.
         placePos();
         //Fixar trianglarna.
-        calcTriangles();
+        //calcTriangles();
     }
 	
 	// Update is called once per frame
@@ -53,11 +53,31 @@ public class Jelly : MonoBehaviour {
 
     void placePos()
     {
+		//Allocate a vertex point each mass.
 
+		points.pos = new Vector3[size * size * size];
+		points.vel = new Vector3[size * size * size];
+		points.acc = new Vector3[size * size * size];
 
+		int row = 0;
+		//Loopar igenom alla vecticies och ger dem dess värden.
+		for (int y = 0; y < size; y++) {
+			
+			for (int z = 0; z < size; z++) {
+				
+				for (int x = 0; x < size; x++) {
+					
+					vert [x + row * size] = new Vector3 (x, y, z);
+					vel [x + row * size] = new Vector3 (0, 0, 0);
+					acc [x + row * size] = new Vector3 (0, 0, 0);
 
+					//Debug.Log("pos: " + x + ", " + y);
+				}
+				row++;
+			}
+		}
 
-
+		mesh.vertices = vert;
 
     }
   
