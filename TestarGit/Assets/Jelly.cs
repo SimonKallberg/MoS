@@ -329,7 +329,7 @@ public class Jelly : MonoBehaviour {
         mesh.vertices = vertices;
     }
 
-    public Vector3 spring_damper(float distance, Vector3 pos_from, Vector3 pos_to, Vector3 v_from, Vector3 v_to)
+    public Vector3 spring_damper3D(float distance, Vector3 pos_from, Vector3 pos_to, Vector3 v_from, Vector3 v_to)
     {
 
         Vector3 direction = pos_to - pos_from;
