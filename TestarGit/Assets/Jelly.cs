@@ -69,7 +69,7 @@ public class Jelly : MonoBehaviour {
 					pos [x + y * size * size + z * size] = new Vector3 (x, y, z);
 					vel [x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 					acc [x + y * size * size + z * size] = new Vector3 (0, 0, 0);
-									}
+				}
 			}
 		}
 
