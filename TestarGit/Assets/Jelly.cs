@@ -63,7 +63,7 @@ public class Jelly : MonoBehaviour {
 
 				for (int x = 0; x < size; x++) {
 					
-					points.pos[x + y * size * size + z * size] = new Vector3 (x, y, z);
+					points.pos[x + y * size * size + z * size] = new Vector3 (x*distance, y* distance, z* distance);
 					points.vel[x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 					points.acc[x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 				}
