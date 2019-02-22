@@ -5,9 +5,9 @@ using UnityEngine;
 
 struct Point
 {
-    Vector3 pos;
-    Vector3 vel;
-    Vector3 acc;
+    public Vector3[] pos;
+    public Vector3[] vel;
+    public Vector3[] acc;
 }
 
 
@@ -43,7 +43,7 @@ public class Jelly : MonoBehaviour {
         //Plaserar pos på rätt ställe så det blir en kub.
         placePos();
         //Fixar trianglarna.
-        //calcTriangles();
+        calcTriangles();
     }
 	
 	// Update is called once per frame
@@ -66,14 +66,14 @@ public class Jelly : MonoBehaviour {
 				
 				for (int x = 0; x < size; x++) {
 					
-					pos [x + y * size * size + z * size] = new Vector3 (x, y, z);
-					vel [x + y * size * size + z * size] = new Vector3 (0, 0, 0);
-					acc [x + y * size * size + z * size] = new Vector3 (0, 0, 0);
+					points.pos[x + y * size * size + z * size] = new Vector3 (x, y, z);
+					points.vel[x + y * size * size + z * size] = new Vector3 (0, 0, 0);
+					points.acc[x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 				}
 			}
 		}
 
-		mesh.vertices = pos;
+		mesh.vertices = points.pos;
 
     }
   
@@ -85,21 +85,106 @@ public class Jelly : MonoBehaviour {
         int[] triangles = new int[noTriang*3];    //triangles for the mesh
 
         int triCounter = 0;
-        for(int z = 0; z<size; z++)
+        for(int z = 0; z<size-1; z++)   // Bottom
         {
-            for (int x = 0; x < size; x++)
+            for (int x = 0; x < size-1; x++)
             {
-                currentPoint = size * z + x; // Lower left corner
+               int currentPoint = size * z + x; // Lower left corner
                 triangles[triCounter + 0] = currentPoint;
                 triangles[triCounter + 1] = currentPoint + size + 1;
                 triangles[triCounter + 2] = currentPoint + size;
                 
                 triangles[triCounter + 3] = currentPoint;
-                triangles[triCounter + 3] = currentPoint + 1;
-                triangles[triCounter + 3] = currentPoint + size + 1;
+                triangles[triCounter + 4] = currentPoint + 1;
+                triangles[triCounter + 5] = currentPoint + size + 1;
                 triCounter += 6;
             }
         }
+        for (int z = 0; z < size - 1; z++)      // Top
+        {
+            for (int x = 0; x < size - 1; x++)
+            {
+
+                int currentPoint = (size*size*(size - 1)) + size * z + x; // Lower left corner
+                triangles[triCounter + 0] = currentPoint;
+                triangles[triCounter + 1] = currentPoint + size;
+                triangles[triCounter + 2] = currentPoint + size + 1;
+
+                triangles[triCounter + 3] = currentPoint;
+                triangles[triCounter + 4] = currentPoint + size + 1;
+                triangles[triCounter + 5] = currentPoint + 1;
+                triCounter += 6;
+            }
+        }
+
+        for (int y = 0; y < size - 1; y++)          // x = 0
+        {
+            for (int z = 0; z < size - 1; z++)
+            {
+
+                int currentPoint = size * z + size*size*y; // Lower left corner
+                triangles[triCounter + 0] = currentPoint;
+                triangles[triCounter + 1] = currentPoint + size;
+                triangles[triCounter + 2] = currentPoint + size + size*size;
+
+                triangles[triCounter + 3] = currentPoint;
+                triangles[triCounter + 4] = currentPoint + size + size * size;
+                triangles[triCounter + 5] = currentPoint + size*size;
+                triCounter += 6;
+            }
+        }
+
+        for (int y = 0; y < size - 1; y++)      // x = size -1 
+        {
+            for (int z = 0; z < size - 1; z++)
+            {
+
+                int currentPoint =  (size - 1) + size * z + size * size * y; // Lower left corner
+                triangles[triCounter + 0] = currentPoint;
+                triangles[triCounter + 1] = currentPoint + size + size * size;
+                triangles[triCounter + 2] = currentPoint + size ;
+
+                triangles[triCounter + 3] = currentPoint;
+                triangles[triCounter + 4] = currentPoint + size * size;
+                triangles[triCounter + 5] = currentPoint + size +  size * size;
+                triCounter += 6;
+            }
+        }
+
+        for (int y = 0; y < size - 1; y++)      // z = 0 
+        {
+            for (int x = 0; x < size - 1; x++)
+            {
+
+                int currentPoint = x + size * size * y; // Lower left corner
+                triangles[triCounter + 0] = currentPoint;
+                triangles[triCounter + 1] = currentPoint + size * size;
+                triangles[triCounter + 2] = currentPoint + size * size + 1;
+
+                triangles[triCounter + 3] = currentPoint;
+                triangles[triCounter + 4] = currentPoint + size * size + 1;
+                triangles[triCounter + 5] = currentPoint + 1;
+                triCounter += 6;
+            }
+        }
+
+        for (int y = 0; y < size - 1; y++)      // z = size - 1
+        {
+            for (int x = 0; x < size - 1; x++)
+            {
+
+                int currentPoint = size*(size-1) + x + size * size * y; // Lower left corner
+                triangles[triCounter + 0] = currentPoint;
+                triangles[triCounter + 1] = currentPoint + size * size + 1;
+                triangles[triCounter + 2] = currentPoint + size * size;
+
+                triangles[triCounter + 3] = currentPoint;
+                triangles[triCounter + 4] = currentPoint + 1;
+                triangles[triCounter + 5] = currentPoint + size * size + 1;
+                triCounter += 6;
+            }
+        }
+        mesh.triangles = triangles;
     }
 
     public Vector3 spring_damper(float distance, Vector3 pos_from, Vector3 pos_to, Vector3 v_from, Vector3 v_to)
