@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//kommentar
-
 struct Point
 {
     Vector3 pos;
     Vector3 vel;
     Vector3 acc;
-    Vector3 hannah;
 }
-
 
 public class Jelly : MonoBehaviour {
 
