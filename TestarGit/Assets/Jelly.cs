@@ -17,7 +17,7 @@ public class Jelly : MonoBehaviour {
     public float R = 1f; //Damepr
     public float M = 5f; //Mass
     public float K = 1f; //Spring
-    public float distance = 1.0f;
+    public float dist = 1.0f;
 
     Point points;
 
@@ -62,8 +62,8 @@ public class Jelly : MonoBehaviour {
 			for (int z = 0; z < size; z++) {
 
 				for (int x = 0; x < size; x++) {
-					
-					points.pos[x + y * size * size + z * size] = new Vector3 (x*distance, y* distance, z* distance);
+
+					points.pos[x + y * size * size + z * size] = new Vector3 (x*dist, y* dist, z* dist);
 					points.vel[x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 					points.acc[x + y * size * size + z * size] = new Vector3 (0, 0, 0);
 				}
@@ -92,7 +92,7 @@ public class Jelly : MonoBehaviour {
                 triangles[triCounter + 0] = currentPoint;
                 triangles[triCounter + 1] = currentPoint + size + 1;
                 triangles[triCounter + 2] = currentPoint + size;
-                
+
                 triangles[triCounter + 3] = currentPoint;
                 triangles[triCounter + 4] = currentPoint + 1;
                 triangles[triCounter + 5] = currentPoint + size + 1;
@@ -121,7 +121,7 @@ public class Jelly : MonoBehaviour {
             for (int z = 0; z < size - 1; z++)
             {
 
-                int currentPoint = size * z + size*size*y; 
+                int currentPoint = size * z + size*size*y;
                 triangles[triCounter + 0] = currentPoint;
                 triangles[triCounter + 1] = currentPoint + size;
                 triangles[triCounter + 2] = currentPoint + size + size*size;
@@ -133,12 +133,12 @@ public class Jelly : MonoBehaviour {
             }
         }
 
-        for (int y = 0; y < size - 1; y++)      // Side plane, x = size -1 
+        for (int y = 0; y < size - 1; y++)      // Side plane, x = size -1
         {
             for (int z = 0; z < size - 1; z++)
             {
 
-                int currentPoint =  (size - 1) + size * z + size * size * y; 
+                int currentPoint =  (size - 1) + size * z + size * size * y;
                 triangles[triCounter + 0] = currentPoint;
                 triangles[triCounter + 1] = currentPoint + size + size * size;
                 triangles[triCounter + 2] = currentPoint + size ;
@@ -150,12 +150,12 @@ public class Jelly : MonoBehaviour {
             }
         }
 
-        for (int y = 0; y < size - 1; y++)      // Side plane, z = 0 
+        for (int y = 0; y < size - 1; y++)      // Side plane, z = 0
         {
             for (int x = 0; x < size - 1; x++)
             {
 
-                int currentPoint = x + size * size * y; 
+                int currentPoint = x + size * size * y;
                 triangles[triCounter + 0] = currentPoint;
                 triangles[triCounter + 1] = currentPoint + size * size;
                 triangles[triCounter + 2] = currentPoint + size * size + 1;
@@ -172,7 +172,7 @@ public class Jelly : MonoBehaviour {
             for (int x = 0; x < size - 1; x++)
             {
 
-                int currentPoint = size*(size-1) + x + size * size * y; 
+                int currentPoint = size*(size-1) + x + size * size * y;
                 triangles[triCounter + 0] = currentPoint;
                 triangles[triCounter + 1] = currentPoint + size * size + 1;
                 triangles[triCounter + 2] = currentPoint + size * size;
@@ -292,7 +292,7 @@ public class Jelly : MonoBehaviour {
                + spring_damper3D(dist, vertices[active], vertices[active + size*size], vel[active], vel[active + size*size])
                + spring_damper3D(dist, vertices[active], vertices[active + size*size - size - 1], vel[active], vel[active + size*size - size - 1])
                + spring_damper3D(dist, vertices[active], vertices[active + size*size - size], vel[active], vel[active + size*size - size])
-               + spring_damper3D(dist, vertices[active], vertices[active + size*size - 1], vel[active], vel[active + size*size - 1])  
+               + spring_damper3D(dist, vertices[active], vertices[active + size*size - 1], vel[active], vel[active + size*size - 1])
                - new Vector3(0, gravity / M, 0);  //the connection down
 
 
