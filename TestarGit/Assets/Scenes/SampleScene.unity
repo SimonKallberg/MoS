@@ -203,10 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 10
-  gravity: 9.39
-  R: 1
+  gravity: 0.02
+  R: 0
   M: 5
-  K: 1
+  K: 0.2
   dist: 1.76
   mat: {fileID: 2100000, guid: cc862c5dc18442946b834943432aa694, type: 2}
 --- !u!23 &444353822
