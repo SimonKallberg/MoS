@@ -44,8 +44,9 @@ public class Jelly : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
-		// Ändrar på points värden enligt vårt sysstem.
+	void FixedUpdate () {
+        // Ändrar på points värden enligt vårt sysstem.
+        UpdateVertPos3D();
 	}
 
     void placePos()
@@ -440,6 +441,82 @@ public class Jelly : MonoBehaviour {
                                + spring_damper3D(longDiag, points.pos[active], points.pos[active - size * size - 1 + size], points.vel[active], points.vel[active - size * size - 1 + size]) // y-1,x-1, z+1
                                + spring_damper3D(longDiag, points.pos[active], points.pos[active - size * size - 1 - size], points.vel[active], points.vel[active - size * size - 1 - size]) // y-1,x-1, z-1
                                - new Vector3(0, gravity / M, 0); // Gravity.
+
+
+            // The edge at y-axis where x=0 and z=0.
+            active = size * size * i;
+            points.acc[active] = spring_damper3D(dist, points.pos[active], points.pos[active + size*size], points.vel[active], points.vel[active + size*size]) // y+1
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size*size], points.vel[active], points.vel[active - size*size]) // y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active + size], points.vel[active], points.vel[active + size]) // z+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + size + size*size], points.vel[active], points.vel[active + size + size*size]) // z+1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + size - size*size], points.vel[active], points.vel[active + size - size*size]) // z+1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active + 1], points.vel[active], points.vel[active + 1]) // x+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + 1 + size * size], points.vel[active], points.vel[active + 1 + size * size]) // x+1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + 1 - size * size], points.vel[active], points.vel[active + 1 - size * size]) // x+1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active + size + 1], points.vel[active], points.vel[active + size + 1]) // z+1,x+1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size + 1 + size * size], points.vel[active], points.vel[active + size + 1 + size * size]) // z+1,x+1, y+1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size + 1 - size * size], points.vel[active], points.vel[active + size + 1 + size * size]) // z+1,x+1, y-1
+                               - new Vector3(0, gravity / M, 0); // Gravity.
+
+            // The edge at y-axis where x=size and z=0.
+            active = size * size * i  + (size-1);
+            points.acc[active] = spring_damper3D(dist, points.pos[active], points.pos[active + size * size], points.vel[active], points.vel[active + size * size]) // y+1
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size * size], points.vel[active], points.vel[active - size * size]) // y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active + size], points.vel[active], points.vel[active + size]) // z+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + size + size * size], points.vel[active], points.vel[active + size + size * size]) // z+1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + size - size * size], points.vel[active], points.vel[active + size - size * size]) // z+1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - 1], points.vel[active], points.vel[active - 1]) // x-1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - 1 + size * size], points.vel[active], points.vel[active - 1 + size * size]) // x-1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - 1 - size * size], points.vel[active], points.vel[active - 1 - size * size]) // x-1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active + size - 1], points.vel[active], points.vel[active + size - 1]) // z+1,x-1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size - 1 + size * size], points.vel[active], points.vel[active + size - 1 + size * size]) // z+1,x-1, y+1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size - 1 - size * size], points.vel[active], points.vel[active + size - 1 + size * size]) // z+1,x-1, y-1
+                               - new Vector3(0, gravity / M, 0); // Gravity.
+
+            // The edge at y-axis where x=size and z=size.
+            active = (size * size) * (i+1) -1;
+            points.acc[active] = spring_damper3D(dist, points.pos[active], points.pos[active + size * size], points.vel[active], points.vel[active + size * size]) // y+1
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size * size], points.vel[active], points.vel[active - size * size]) // y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size], points.vel[active], points.vel[active - size]) // z-1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - size + size * size], points.vel[active], points.vel[active - size + size * size]) // z-1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - size - size * size], points.vel[active], points.vel[active - size - size * size]) // z-1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - 1], points.vel[active], points.vel[active - 1]) // x-1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - 1 + size * size], points.vel[active], points.vel[active - 1 + size * size]) // x-1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - 1 - size * size], points.vel[active], points.vel[active - 1 - size * size]) // x-1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size - 1], points.vel[active], points.vel[active - size - 1]) // z-1,x-1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active - size - 1 + size * size], points.vel[active], points.vel[active - size - 1 + size * size]) // z-1,x-1, y+1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active - size - 1 - size * size], points.vel[active], points.vel[active - size - 1 + size * size]) // z-1,x-1, y-1
+                               - new Vector3(0, gravity / M, 0); // Gravity.
+
+            // The edge at y-axis where x=size and z=size.
+            active = (size * size) * (i + 1) - size;
+            points.acc[active] = spring_damper3D(dist, points.pos[active], points.pos[active + size * size], points.vel[active], points.vel[active + size * size]) // y+1
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size * size], points.vel[active], points.vel[active - size * size]) // y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size], points.vel[active], points.vel[active - size]) // z-1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - size + size * size], points.vel[active], points.vel[active - size + size * size]) // z-1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active - size - size * size], points.vel[active], points.vel[active - size - size * size]) // z-1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active + 1], points.vel[active], points.vel[active + 1]) // x+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + 1 + size * size], points.vel[active], points.vel[active + 1 + size * size]) // x+1, y+1
+                               + spring_damper3D(diag, points.pos[active], points.pos[active + 1 - size * size], points.vel[active], points.vel[active + 1 - size * size]) // x+1, y-1
+
+                               + spring_damper3D(dist, points.pos[active], points.pos[active - size + 1], points.vel[active], points.vel[active - size + 1]) // z-1,x+1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active - size + 1 + size * size], points.vel[active], points.vel[active - size + 1 + size * size]) // z-1,x+1, y+1
+                               + spring_damper3D(longDiag, points.pos[active], points.pos[active - size + 1 - size * size], points.vel[active], points.vel[active - size + 1 + size * size]) // z-1,x+1, y-1
+                               - new Vector3(0, gravity / M, 0); // Gravity.
+
+
+
 
         }
 
