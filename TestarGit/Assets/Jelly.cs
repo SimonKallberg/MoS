@@ -298,7 +298,7 @@ public class Jelly : MonoBehaviour {
                - new Vector3(0, gravity / M, 0);  //the connection down
 
                //position (0,size,0)
-               active = size*size*size - size*size;
+               active = size*size*(size - 1);
                points.acc[active] = spring_damper3D(dist, points.pos[active], points.pos[active + 1], points.vel[active], points.vel[active + 1]) //the connection right
                       + spring_damper3D(dist, points.pos[active], points.pos[active + size], points.vel[active], points.vel[active + size])
                       + spring_damper3D(diag, points.pos[active], points.pos[active + size + 1], points.vel[active], points.vel[active + size + 1])
