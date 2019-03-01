@@ -599,7 +599,7 @@ public class Jelly : MonoBehaviour {
                                   + spring_damper3D(diag, points.pos[active], points.pos[active - 1 + size], points.vel[active], points.vel[active - 1 + size]) //i-1,j+1
                                   + spring_damper3D(diag, points.pos[active], points.pos[active + 1 - size], points.vel[active], points.vel[active + 1 - size]) //i+1,j-1
                                   + spring_damper3D(diag, points.pos[active], points.pos[active + 1 + size], points.vel[active], points.vel[active + 1 + size]) //i+1,j+1
-                                                                                                                                                                
+
                                   + spring_damper3D(dist, points.pos[active], points.pos[active - (size * size)], points.vel[active], points.vel[active - (size * size)]) // The one below
                                   + spring_damper3D(diag, points.pos[active], points.pos[-size * size + active + 1], points.vel[active], points.vel[-size * size + active + 1]) // i + 1
                                   + spring_damper3D(diag, points.pos[active], points.pos[-size * size + active - 1], points.vel[active], points.vel[-size * size + active - 1]) // i - 1
