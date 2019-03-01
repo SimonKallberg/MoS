@@ -317,13 +317,15 @@ public class Jelly : MonoBehaviour {
         // calculate the velocity and positions for all masses.
         for (int y = 0; y < size; y++)
         {
-            for (int x = 0; x < size; x++)
-            {
-                active = x + y * size;
-                points.vel[active] = points.vel[active] + h * points.acc[active];
-                points.pos[active] = points.pos[active] + h * points.vel[active];
-            }
-
+           for (int z = 0; z < size; z++)
+           {
+              for (int x = 0; x < size; x++)
+              {
+                  active = x + z * size + y * size * size;
+                  points.vel[active] = points.vel[active] + h * points.acc[active];
+                  points.pos[active] = points.pos[active] + h * points.vel[active];
+              }
+           }
         }
 
         mesh.vertices = points.pos;
