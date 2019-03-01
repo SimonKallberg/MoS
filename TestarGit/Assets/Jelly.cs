@@ -260,7 +260,7 @@ public class Jelly : MonoBehaviour {
                + spring_damper3D(dist, points.pos[active], points.pos[active + size*size], points.vel[active], points.vel[active + size*size])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size + 1], points.vel[active], points.vel[active + size*size + 1])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size + size], points.vel[active], points.vel[active + size*size + size])
-               + spring_damper3D(diag, points.pos[active], points.pos[active + size*size + size + 1], points.vel[active], points.vel[active + size*size + size + 1])
+               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size*size + size + 1], points.vel[active], points.vel[active + size*size + size + 1])
                - new Vector3(0, gravity / M, 0);  //the connection up
 
         //position (size,0,0)
@@ -270,7 +270,7 @@ public class Jelly : MonoBehaviour {
                + spring_damper3D(diag, points.pos[active], points.pos[active + size - 1], points.vel[active], points.vel[active + size - 1])
                + spring_damper3D(dist, points.pos[active], points.pos[active + size*size], points.vel[active], points.vel[active + size*size])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size - 1], points.vel[active], points.vel[active + size*size - 1])
-               + spring_damper3D(diag, points.pos[active], points.pos[active + size*size + size - 1], points.vel[active], points.vel[active + size*size + size - 1])
+               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size*size + size - 1], points.vel[active], points.vel[active + size*size + size - 1])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size + size], points.vel[active], points.vel[active + size*size + size])
                - new Vector3(0, gravity / M, 0);  //the connection up
 
@@ -281,7 +281,7 @@ public class Jelly : MonoBehaviour {
                + spring_damper3D(diag, points.pos[active], points.pos[active - size + 1], points.vel[active], points.vel[active - size + 1])
                + spring_damper3D(dist, points.pos[active], points.pos[active + size*size], points.vel[active], points.vel[active + size*size])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size - size], points.vel[active], points.vel[active + size*size - size])
-               + spring_damper3D(diag, points.pos[active], points.pos[active + size*size - size + 1], points.vel[active], points.vel[active + size*size - size + 1])
+               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size*size - size + 1], points.vel[active], points.vel[active + size*size - size + 1])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size + 1], points.vel[active], points.vel[active + size*size + 1])
                - new Vector3(0, gravity / M, 0);  //the connection down
 
@@ -291,7 +291,7 @@ public class Jelly : MonoBehaviour {
                + spring_damper3D(dist, points.pos[active], points.pos[active - size], points.vel[active], points.vel[active - size])
                + spring_damper3D(diag, points.pos[active], points.pos[active - size - 1], points.vel[active], points.vel[active - size - 1])
                + spring_damper3D(dist, points.pos[active], points.pos[active + size*size], points.vel[active], points.vel[active + size*size])
-               + spring_damper3D(diag, points.pos[active], points.pos[active + size*size - size - 1], points.vel[active], points.vel[active + size*size - size - 1])
+               + spring_damper3D(longDiag, points.pos[active], points.pos[active + size*size - size - 1], points.vel[active], points.vel[active + size*size - size - 1])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size - size], points.vel[active], points.vel[active + size*size - size])
                + spring_damper3D(diag, points.pos[active], points.pos[active + size*size - 1], points.vel[active], points.vel[active + size*size - 1])
                - new Vector3(0, gravity / M, 0);  //the connection down
