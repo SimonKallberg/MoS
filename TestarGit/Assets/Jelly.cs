@@ -12,12 +12,12 @@ struct Point
 public class Jelly : MonoBehaviour {
 
     public int size = 10;
-    public float gravity = 0.2f;
+    public float gravity = 0.02f;
 
-    public float R = 1f; //Damepr
+    public float R = 0f; //Damepr
     public float M = 5f; //Mass
-    public float K = 1f; //Spring
-    public float dist = 1.0f;
+    public float K = 0.2f; //Spring
+    public float dist = 1.76f;
 
     Point points;
 
@@ -44,8 +44,9 @@ public class Jelly : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		// Ändrar på points värden enligt vårt sysstem.
+    UpdateVertPos3D();
 	}
 
     void placePos()

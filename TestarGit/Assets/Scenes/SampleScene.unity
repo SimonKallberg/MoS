@@ -189,7 +189,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!114 &444353821
 MonoBehaviour:
@@ -203,10 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 10
-  gravity: 9.39
-  R: 1
+  gravity: 0.02
+  R: 0
   M: 5
-  K: 1
+  K: 0.5
   dist: 1.76
   mat: {fileID: 2100000, guid: cc862c5dc18442946b834943432aa694, type: 2}
 --- !u!23 &444353822
@@ -219,8 +219,8 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:
@@ -230,8 +230,8 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 1
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
