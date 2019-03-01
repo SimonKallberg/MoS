@@ -205,6 +205,7 @@ public class Jelly : MonoBehaviour {
     {
 
         float diag = Mathf.Sqrt(dist * dist + dist * dist);
+        float longDiag = Mathf.Sqrt(dist * dist + dist * dist + dist*dist);
         float h = 0.1f;
 
         //Calculate acceleration for all messes.
