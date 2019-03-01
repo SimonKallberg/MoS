@@ -202,12 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf227a21c03cfe545a05b161085e0bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 4
-  gravity: 0.02
-  R: 0
+  size: 7
+  gravity: 0
+  R: 0.09
   M: 5
-  K: 0.2
-  dist: 1.76
+  K: 0.41
+  dist: 1
   mat: {fileID: 2100000, guid: cc862c5dc18442946b834943432aa694, type: 2}
 --- !u!23 &444353822
 MeshRenderer:
