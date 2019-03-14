@@ -1,9 +1,3 @@
-MoS
+Projektarbete i TNM095 av Martin Hag, Simon Källberg, Evelyn Bankell, Hannah Bergenroth
 
-Testar pusha upp en change
-
-hejhej :D
-
-god morgon!
-
-:)
+För att starta upp projektet behövs Unity. Koden som använts för simulera gelén ligger i Jelly.cs.
