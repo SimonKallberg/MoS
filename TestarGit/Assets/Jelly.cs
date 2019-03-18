@@ -17,7 +17,7 @@ public class Jelly : MonoBehaviour {
     public float R = 0f; //Damepr
     public float M = 5f; //Mass
     public float K = 0.2f; //Spring
-    public float dist = 1.76f;
+    public float dist = 1.75f;
 
     Point points;
 
